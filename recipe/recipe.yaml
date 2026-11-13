@@ -1,5 +1,5 @@
 context:
-  version: "0.1.0"
+  version: "0.2.0"
 
 package:
   name: fsspec-kafka
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/f/fsspec-kafka/fsspec_kafka-${{ version }}.tar.gz
-  sha256: b76df51065d733d02d94ac959a815129d7c7ee9230fee2a03ccd3806f2bb34b7
+  sha256: 7b9b4c6b054c277cdb41d8adff5221bb2c60b9b45efb960126a98b835bae1a06
 
 build:
   number: 0
@@ -32,7 +32,7 @@ requirements:
         - cross-python_${{ target_platform }}
         - crossenv
         - hatchling
-        - hatch-rs >=0.1.4
+        - hatch-rs >=0.6.0
     - ${{ compiler('c') }}
     - ${{ compiler('cxx') }}
     - ${{ stdlib('c') }}
@@ -50,13 +50,15 @@ requirements:
     - python
     - pip
     - hatchling
-    - hatch-rs >=0.1.4
+    - hatch-rs >=0.6.0
+    - fsspec-rs >=0.2.1,<0.3
     - if: is_abi3
       then:
         - python-abi3
   run:
     - python
     - fsspec
+    - fsspec-rs >=0.2.1,<0.3
 
 tests:
   - python:
