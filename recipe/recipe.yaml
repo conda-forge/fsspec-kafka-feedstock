@@ -32,7 +32,7 @@ requirements:
         - cross-python_${{ target_platform }}
         - crossenv
         - hatchling
-        - hatch-rs >=0.6.0
+        - hatch-rs >=0.6.1
     - ${{ compiler('c') }}
     - ${{ compiler('cxx') }}
     - ${{ stdlib('c') }}
@@ -50,7 +50,7 @@ requirements:
     - python
     - pip
     - hatchling
-    - hatch-rs >=0.6.0
+    - hatch-rs >=0.6.1
     - fsspec-rs >=0.2.1,<0.3
     - if: is_abi3
       then:
@@ -58,6 +58,7 @@ requirements:
   run:
     - python
     - fsspec
+    - fsspec-data >=0.8.0,<0.9
     - fsspec-rs >=0.2.1,<0.3
 
 tests:
@@ -70,11 +71,11 @@ tests:
         - "*"
 
   - script:
-      - python -m pytest -v -o addopts="" fsspec_kafka/tests/test_all.py
-      - python -c "import fsspec, fsspec_kafka; assert fsspec.get_filesystem_class('kafka') is fsspec_kafka.KafkaFileSystem"
+      - python -m pytest -v -o addopts="" --ignore=fsspec_kafka/tests/integration fsspec_kafka/tests
+      - python -c "import fsspec, fsspec_kafka; assert fsspec_kafka.linked_to_libfsspec(); assert fsspec.get_filesystem_class('kafka') is fsspec_kafka.KafkaFileSystem"
     files:
       source:
-        - fsspec_kafka/tests/test_all.py
+        - fsspec_kafka/tests
     requirements:
       run:
         - pytest
