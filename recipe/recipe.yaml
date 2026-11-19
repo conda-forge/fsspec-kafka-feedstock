@@ -1,5 +1,5 @@
 context:
-  version: "0.3.0"
+  version: "0.3.2"
 
 package:
   name: fsspec-kafka
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/f/fsspec-kafka/fsspec_kafka-${{ version }}.tar.gz
-  sha256: de8e9dede58c91dfa9d643cd47334d667bacda7ca63109f674702335e17a9139
+  sha256: 1186e29d850c20e2fac797609ae45edb394084c20b6ecb61b907d15ce488d080
 
 build:
   number: 0
