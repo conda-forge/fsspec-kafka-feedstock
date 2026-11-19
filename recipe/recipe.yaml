@@ -51,15 +51,15 @@ requirements:
     - pip
     - hatchling
     - hatch-rs >=0.6.1
-    - fsspec-rs >=0.2.1,<0.3
+    - fsspec-rs >=0.3.0,<0.4
     - if: is_abi3
       then:
         - python-abi3
   run:
     - python
     - fsspec
-    - fsspec-data >=0.8.0,<0.9
-    - fsspec-rs >=0.2.1,<0.3
+    - fsspec-data >=0.9.0,<0.10
+    - fsspec-rs >=0.3.0,<0.4
 
 tests:
   - python:
